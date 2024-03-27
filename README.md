@@ -249,3 +249,247 @@ load simulations:
 | latency percentile | p50 = `43,39` ms, p75 = `54,98` ms, p95 = `101,25` ms, p99 = `341,76` ms |
 
 # .Net 8
+## Bars - 1
+### gRPC
+> test info
+
+test suite: `nbomber_default_test_suite_name`
+
+test name: `nbomber_default_test_name`
+
+session id: `2024-03-27_22.35.17_session_59639e23`
+
+> scenario stats
+
+scenario: `scenario_grpc`
+
+  - ok count: `13390834`
+
+  - fail count: `0`
+
+  - all data: `0` MB
+
+  - duration: `00:02:00`
+
+load simulations:
+
+  - `keep_constant`, copies: `1`, during: `00:00:30`
+
+  - `ramping_constant`, copies: `50`, during: `00:00:30`
+
+  - `keep_constant`, copies: `50`, during: `00:00:30`
+
+  - `ramping_constant`, copies: `20`, during: `00:00:30`
+
+|step|ok stats|
+|---|---|
+|name|`global information`|
+|request count|all = `13390834`, ok = `13390834`, RPS = `111590,3`|
+|latency|min = `0,03` ms, mean = `0,25` ms, max = `33,56` ms, StdDev = `0,63`|
+|latency percentile|p50 = `0,16` ms, p75 = `0,19` ms, p95 = `0,26` ms, p99 = `2,41` ms|
+
+
+
+### HTTP
+> test info
+
+test suite: `nbomber_default_test_suite_name`
+
+test name: `nbomber_default_test_name`
+
+session id: `2024-03-27_22.39.41_session_1cd7b6f5`
+
+> scenario stats
+
+scenario: `scenario_http`
+
+  - ok count: `15787358`
+
+  - fail count: `0`
+
+  - all data: `0` MB
+
+  - duration: `00:02:00`
+
+load simulations:
+
+  - `keep_constant`, copies: `1`, during: `00:00:30`
+
+  - `ramping_constant`, copies: `50`, during: `00:00:30`
+
+  - `keep_constant`, copies: `50`, during: `00:00:30`
+
+  - `ramping_constant`, copies: `20`, during: `00:00:30`
+
+|step|ok stats|
+|---|---|
+|name|`global information`|
+|request count|all = `15787358`, ok = `15787358`, RPS = `131561,3`|
+|latency|min = `0,02` ms, mean = `0,21` ms, max = `29,38` ms, StdDev = `0,52`|
+|latency percentile|p50 = `0,15` ms, p75 = `0,2` ms, p95 = `0,27` ms, p99 = `2,87` ms|
+
+### HTTP Static
+> test info
+
+test suite: `nbomber_default_test_suite_name`
+
+test name: `nbomber_default_test_name`
+
+session id: `2024-03-27_22.43.50_session_950b6bb8`
+
+> scenario stats
+
+scenario: `scenario_http_static`
+
+  - ok count: `16172017`
+
+  - fail count: `0`
+
+  - all data: `0` MB
+
+  - duration: `00:02:00`
+
+load simulations:
+
+  - `keep_constant`, copies: `1`, during: `00:00:30`
+
+  - `ramping_constant`, copies: `50`, during: `00:00:30`
+
+  - `keep_constant`, copies: `50`, during: `00:00:30`
+
+  - `ramping_constant`, copies: `20`, during: `00:00:30`
+
+|step|ok stats|
+|---|---|
+|name|`global information`|
+|request count|all = `16172017`, ok = `16172017`, RPS = `134766,8`|
+|latency|min = `0,02` ms, mean = `0,2` ms, max = `33,94` ms, StdDev = `0,52`|
+|latency percentile|p50 = `0,14` ms, p75 = `0,19` ms, p95 = `0,27` ms, p99 = `2,85` ms|
+
+## Bars - 10000
+### gRPC
+> test info
+
+test suite: `nbomber_default_test_suite_name`
+
+test name: `nbomber_default_test_name`
+
+session id: `2024-03-27_22.48.16_session_e6685156`
+
+> scenario stats
+
+scenario: `scenario_grpc`
+
+  - ok count: `102354`
+
+  - fail count: `0`
+
+  - all data: `0` MB
+
+  - duration: `00:02:00`
+
+load simulations:
+
+  - `keep_constant`, copies: `1`, during: `00:00:30`
+
+  - `ramping_constant`, copies: `50`, during: `00:00:30`
+
+  - `keep_constant`, copies: `50`, during: `00:00:30`
+
+  - `ramping_constant`, copies: `20`, during: `00:00:30`
+
+|step|ok stats|
+|---|---|
+|name|`global information`|
+|request count|all = `102354`, ok = `102354`, RPS = `853`|
+|latency|min = `0,7` ms, mean = `34,17` ms, max = `4157,11` ms, StdDev = `99,48`|
+|latency percentile|p50 = `33,38` ms, p75 = `43,71` ms, p95 = `62,46` ms, p99 = `80,38` ms|
+
+
+### HTTP
+> test info
+
+test suite: `nbomber_default_test_suite_name`
+
+test name: `nbomber_default_test_name`
+
+session id: `2024-03-27_22.53.08_session_d110ddd5`
+
+> scenario stats
+
+scenario: `scenario_http`
+
+  - ok count: `61614`
+
+  - fail count: `0`
+
+  - all data: `0` MB
+
+  - duration: `00:02:00`
+
+load simulations:
+
+  - `keep_constant`, copies: `1`, during: `00:00:30`
+
+  - `ramping_constant`, copies: `50`, during: `00:00:30`
+
+  - `keep_constant`, copies: `50`, during: `00:00:30`
+
+  - `ramping_constant`, copies: `20`, during: `00:00:30`
+
+|step|ok stats|
+|---|---|
+|name|`global information`|
+|request count|all = `61614`, ok = `61614`, RPS = `513,4`|
+|latency|min = `6,13` ms, mean = `54,68` ms, max = `622,98` ms, StdDev = `54,06`|
+|latency percentile|p50 = `45,82` ms, p75 = `63,52` ms, p95 = `109,31` ms, p99 = `318,21` ms|
+
+
+### HTTP Static
+> test info
+
+test suite: `nbomber_default_test_suite_name`
+
+test name: `nbomber_default_test_name`
+
+session id: `2024-03-27_22.56.59_session_36153ef6`
+
+> scenario stats
+
+scenario: `scenario_http_static`
+
+  - ok count: `68052`
+
+  - fail count: `0`
+
+  - all data: `0` MB
+
+  - duration: `00:02:00`
+
+load simulations:
+
+  - `keep_constant`, copies: `1`, during: `00:00:30`
+
+  - `ramping_constant`, copies: `50`, during: `00:00:30`
+
+  - `keep_constant`, copies: `50`, during: `00:00:30`
+
+  - `ramping_constant`, copies: `20`, during: `00:00:30`
+
+|step|ok stats|
+|---|---|
+|name|`global information`|
+|request count|all = `68052`, ok = `68052`, RPS = `567,1`|
+|latency|min = `3,25` ms, mean = `51,49` ms, max = `555,16` ms, StdDev = `48,85`|
+|latency percentile|p50 = `43,39` ms, p75 = `61,57` ms, p95 = `101,25` ms, p99 = `322,05` ms|
+
+
+
+
+
+
+
+
+
+
+
