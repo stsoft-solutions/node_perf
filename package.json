@@ -1,20 +1,11 @@
 {
-  "name": "node_perf",
+  "name": "node_srv",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/stsoft-solutions/node_perf.git"
-  },
-  "private": true,
-  "dependencies": {
-    "@grpc/grpc-js": "^1.10.4",
-    "@grpc/proto-loader": "^0.7.11",
-    "express": "^4.19.2",
-    "nocache": "^4.0.0"
-  }
+  "author": "",
+  "license": "ISC"
 }
