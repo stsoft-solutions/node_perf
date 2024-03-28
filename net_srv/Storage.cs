@@ -2,12 +2,12 @@
 
 namespace net_srv;
 
-public class Storage
+public static class Storage
 {
-    public Storage()
+    static Storage()
     {
         var response = new BarsResponse();
-        response.Bars.AddRange(Enumerable.Range(0, 10_000)
+        response.Bars.AddRange(Enumerable.Range(0, 100)
             .Select(_ => new Bar
             {
                 Open = 132.23, High = 4324, Low = 433, Close = 432
@@ -17,7 +17,8 @@ public class Storage
         StaticResponse = System.Text.Json.JsonSerializer.Serialize(response);
     }
 
-    public string StaticResponse { get; }
 
-    public BarsResponse Response { get; }
+    public static string StaticResponse { get; }
+
+    public static BarsResponse Response { get; }
 }

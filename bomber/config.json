@@ -1,0 +1,47 @@
+﻿{
+  "TestSuite": "node_pref",
+  "TestName": "test_http_grpc_api",
+  "TargetScenarios": [
+    "scenario_grpc"
+  ],
+  "GlobalSettings": {
+    "ScenariosSettings": [
+      {
+        "ScenarioName": "scenario_grpc",
+        "WarmUpDuration": "00:00:05",
+        "LoadSimulationsSettings": [
+          {
+            "KeepConstant": [
+              1,
+              "00:02:00"
+            ]
+          }
+        ]
+      },
+      {
+        "ScenarioName": "scenario_http",
+        "WarmUpDuration": "00:00:05",
+        "LoadSimulationsSettings": [
+          {
+            "KeepConstant": [
+              1,
+              "00:02:00"
+            ]
+          }
+        ]
+      },
+      {
+        "ScenarioName": "scenario_http_static",
+        "WarmUpDuration": "00:00:05",
+        "LoadSimulationsSettings": [
+          {
+            "KeepConstant": [
+              1,
+              "00:02:00"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
