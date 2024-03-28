@@ -28,26 +28,12 @@ With set bars:
 ```
 
 Computer:
-CPU
-```
-	12th Gen Intel(R) Core(TM) i7-12700
-	Base speed:	2,10 GHz
-	Sockets:	1
-	Cores:	12
-	Logical processors:	20
-	Virtualization:	Enabled
-	L1 cache:	1,0 MB
-	L2 cache:	12,0 MB
-	L3 cache:	25,0 MB
-```
-
-Memory
+CPU: `12th Gen Intel(R) Core(TM) i7-12700`
+Memory:
 ```
 	32,0 GB
 	Speed:	2133 MHz
-	Slots used:	2 of 4
 	Form factor:	DIMM
-	Hardware reserved:	244 MB
 ```
 
 # Performance summary
