@@ -8,7 +8,7 @@ const port = 3000
 
 // Prepare bars
 const barsResponse = { bars: [] };
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 5000; i++) {
     barsResponse.bars.push({open: 132.23, high: 4324, low: 433, close: 432});
 }
 const barsResponseStatic = JSON.stringify(barsResponse);

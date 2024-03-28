@@ -12,6 +12,9 @@ using Simple;
 const string grpcUrl = "http://localhost:50051";
 const string httpUrl = "http://localhost:3000";
 
+// Set minimum thread pool size
+ThreadPool.SetMinThreads(300, 300);
+
 var services = new ServiceCollection();
 
 // Configure gRPC client using GrpcClientFactory

@@ -7,7 +7,7 @@ public static class Storage
     static Storage()
     {
         var response = new BarsResponse();
-        response.Bars.AddRange(Enumerable.Range(0, 100)
+        response.Bars.AddRange(Enumerable.Range(0, 5_000)
             .Select(_ => new Bar
             {
                 Open = 132.23, High = 4324, Low = 433, Close = 432
