@@ -1,11 +1,10 @@
 use actix_web::{App, get, HttpResponse, HttpServer, Responder};
 use lazy_static::lazy_static;
 use serde::Serialize;
-use serde_json::json;
 
 lazy_static! {
     static ref B: Bars  = create_bars();
-    static ref BS: String = serde_json::to_string(&create_bars());
+    static ref BS: String = serde_json::to_string(&create_bars()).unwrap();
 }
 
 fn create_bars() -> Bars {
@@ -28,7 +27,7 @@ async fn bars() -> impl Responder {
 
 #[get("/bars-static")]
 async fn bars_static() -> impl Responder {
-    HttpResponse::Ok().body(&*BS);
+    HttpResponse::Ok().body(&**BS)
 }
 
 #[actix_web::main] // or #[tokio::main]
