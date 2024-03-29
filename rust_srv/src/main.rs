@@ -27,7 +27,7 @@ async fn bars() -> impl Responder {
 
 #[get("/bars-static")]
 async fn bars_static() -> impl Responder {
-    HttpResponse::Ok().body(&**BS)
+    HttpResponse::Ok().message_body(&**BS)
 }
 
 #[actix_web::main] // or #[tokio::main]
