@@ -1,11 +1,13 @@
 use std::sync::Arc;
 use tonic::{transport::Server, Request, Response, Status};
-use simple::bar_service_server::{BarService, BarServiceServer};
-use crate::simple::{Bar, BarsResponse};
 
 pub mod simple {
     tonic::include_proto!("simple"); // The string specified here must match the proto package name
 }
+
+use simple::bar_service_server::{BarService, BarServiceServer};
+use crate::simple::{Bar, BarsResponse};
+
 
 #[derive(Debug)]
 pub struct GrpcBarService {
@@ -32,13 +34,13 @@ impl Default for GrpcBarService {
 #[tonic::async_trait]
 impl BarService for GrpcBarService {
     async fn get_bar100(&self, _request: Request<()>) -> Result<Response<BarsResponse>, Status> {
-        let bars = self.state.as_ref();
-        Ok(Response::new(bars.bar100.clone()))
+        let bars = self.state.as_ref().bar100.clone();
+        Ok(Response::new(bars))
     }
 
     async fn get_bar5000(&self, _request: Request<()>) -> Result<Response<BarsResponse>, Status> {
-        let bars = self.state.as_ref();
-        Ok(Response::new(bars.bar5000.clone()))
+        let bars = self.state.as_ref().bar5000.clone();
+        Ok(Response::new(bars))
     }
 }
 
