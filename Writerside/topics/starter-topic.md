@@ -34,4 +34,4 @@ message Bar {
 | Node.js (gRPC)        | 3004 |     |         |
 | Rust axum (Rest)      | 3005 |     |         |
 | Rust actix-web (Rest) | 3006 |     |         |
-| Rust (gRPC)           |      |     |         |
+| Rust (gRPC)           | 3007 |     |         |
