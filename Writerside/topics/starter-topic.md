@@ -10,8 +10,13 @@ gRPC
 - GetBar100
 - GetBar5000
 
-*Data item*
+Response
 ```
+message BarsResponse {
+  string symbol = 1; 
+  repeated Bar bars = 2;
+}
+
 message Bar {
   double open = 1;
   double high = 2;
@@ -20,21 +25,13 @@ message Bar {
 }
 ```
 
-Response
-```
-message BarsResponse {
-  string symbol = 1; 
-  repeated Bar bars = 2;
-}
-```
-
 |                       | Port | RPS | Mean ms |   
 |-----------------------|------|-----|---------|
 | .Net 8 (Rest)         | 3000 |     |         |
-| Node.js (Rest)        | 3001 |     |         |
+| .Net 8 (gRPC)         | 3001 |     |         |
+| Node.js (Rest)        |      |     |         |
 | Express.js (Rest)     |      |     |         |
 | Rust actix-web (Rest) |      |     |         |
 | Rust axum (Rest)      |      |     |         |
 | Node.js (gRPC)        |      |     |         |
-| .Net 8 (gRPC)         |      |     |         |
 | Rust (gRPC)           |      |     |         |

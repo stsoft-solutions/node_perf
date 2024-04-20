@@ -10,7 +10,8 @@ option objc_class_prefix = "HLW";
 package simple;
 
 service BarService {
-  rpc GetBars(google.protobuf.Empty) returns(BarsResponse);
+  rpc GetBar100(google.protobuf.Empty) returns(BarsResponse);
+  rpc GetBar5000(google.protobuf.Empty) returns(BarsResponse);
 }
 
 message Bar {
@@ -21,5 +22,6 @@ message Bar {
 }
 
 message BarsResponse {
-  repeated Bar bars = 1;
+  string symbol = 1;
+  repeated Bar bars = 2;
 }
