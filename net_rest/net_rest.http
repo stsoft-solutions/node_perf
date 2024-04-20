@@ -1,6 +1,11 @@
-@net_rest_HostAddress = http://localhost:5006
+@net_rest_HostAddress = http://localhost:3000
 
-GET {{net_rest_HostAddress}}/weatherforecast/
+GET {{net_rest_HostAddress}}/bar/100
+Accept: application/json
+
+###
+
+GET {{net_rest_HostAddress}}/bar/5000
 Accept: application/json
 
 ###
