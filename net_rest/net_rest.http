@@ -1,4 +1,4 @@
-@net_rest_HostAddress = http://localhost:3002
+@net_rest_HostAddress = http://localhost:3006
 
 GET {{net_rest_HostAddress}}/bar/100
 Accept: application/json
