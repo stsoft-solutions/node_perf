@@ -31,7 +31,7 @@ var grpcScenario = Scenario.Create("scenario_grpc", async context =>
     try
     {
         var grpcBars = await grpcFactory.CreateClient<BarService.BarServiceClient>("simple").GetBarsAsync(new Empty());
-        return Response.Ok<BarsResponse>(sizeBytes: grpcBars.CalculateSize(), payload: grpcBars);
+        return Response.Ok<BarsResponse>(payload: grpcBars);
     }
     catch (Exception)
     {
@@ -50,10 +50,9 @@ var httpScenario = Scenario.Create("scenario_http", async context =>
         return Response.Fail();
     }
     if (!response.IsSuccessStatusCode) return Response.Fail();
-    var json = await response.Content.ReadAsStringAsync();
-    var bars = JsonSerializer.Deserialize<JsonBarsResponse>(json);
+    var bars = await response.Content.ReadFromJsonAsync<JsonBarsResponse>();
     if (bars == null) return Response.Fail();
-    return Response.Ok<JsonBarsResponse>(sizeBytes: json.Length, payload: bars);
+    return Response.Ok<JsonBarsResponse>(payload: bars);
 });
 var httpStaticScenario = Scenario.Create("scenario_http_static", async context =>
 {
@@ -67,14 +66,30 @@ var httpStaticScenario = Scenario.Create("scenario_http_static", async context =
         return Response.Fail();
     }
     if (!response.IsSuccessStatusCode) return Response.Fail();
-    var json = await response.Content.ReadAsStringAsync();
-    var bars = JsonSerializer.Deserialize<JsonBarsResponse>(json);
+    var bars = await response.Content.ReadFromJsonAsync<JsonBarsResponse>();
     if (bars == null) return Response.Fail();
-    return Response.Ok<JsonBarsResponse>(sizeBytes: json.Length, payload: bars);
+    return Response.Ok<JsonBarsResponse>(payload: bars);
 });
 
+// Define load simulation
+var loadSimulation1 = Simulation.KeepConstant(1, TimeSpan.FromMinutes(2));
+var loadSimulation50 = Simulation.KeepConstant(50, TimeSpan.FromMinutes(2));
+var loadSimulation200 = Simulation.KeepConstant(200, TimeSpan.FromMinutes(2));
+
 // Run scenarios
-NBomberRunner.RegisterScenarios(httpStaticScenario, httpScenario, grpcScenario)
-    .WithReportFormats(ReportFormat.Md)
-    .LoadConfig("config.json")
-    .Run();
+RunSimulation(httpScenario, loadSimulation1);
+RunSimulation(httpStaticScenario, loadSimulation1);
+
+RunSimulation(httpScenario, loadSimulation50);
+RunSimulation(httpStaticScenario, loadSimulation50);
+
+RunSimulation(httpScenario, loadSimulation200);
+RunSimulation(httpStaticScenario, loadSimulation200);
+
+static void RunSimulation(ScenarioProps scenarioProps, LoadSimulation loadSimulation)
+{
+    NBomberRunner.RegisterScenarios(scenarioProps.WithLoadSimulations(loadSimulation))
+        .WithTargetScenarios(scenarioProps.ScenarioName)
+        .Run();
+    
+}
