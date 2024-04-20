@@ -29,9 +29,9 @@ message Bar {
 |-----------------------|------|-----|---------|
 | .Net 8 (Rest)         | 3000 |     |         |
 | .Net 8 (gRPC)         | 3001 |     |         |
-| Node.js (Rest)        |      |     |         |
-| Express.js (Rest)     |      |     |         |
+| Node.js (Rest)        | 3002 |     |         |
+| Express.js (Rest)     | 3003 |     |         |
+| Node.js (gRPC)        | 3004 |     |         |
 | Rust actix-web (Rest) |      |     |         |
 | Rust axum (Rest)      |      |     |         |
-| Node.js (gRPC)        |      |     |         |
 | Rust (gRPC)           |      |     |         |
