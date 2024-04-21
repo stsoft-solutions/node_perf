@@ -1,6 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 using JetBrains.Annotations;
 
+namespace bomber;
+
 [UsedImplicitly]
 public class JsonBar
 {

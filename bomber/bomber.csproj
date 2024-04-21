@@ -7,4 +7,21 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.26.0"/>
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.61.0"/>
+    <PackageReference Include="Grpc.Tools" Version="2.62.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="JetBrains.Annotations" Version="2023.3.0"/>
+    <PackageReference Include="NBomber" Version="5.5.0"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\proto\simple.proto" GrpcServices="Client">
+      <Link>Protos\simple.proto</Link>
+    </Protobuf>
+  </ItemGroup>
+
 </Project>
