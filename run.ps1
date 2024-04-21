@@ -1,0 +1,1 @@
+.\bomber\bin\Release\net8.0\bomber.exe http 3000 100 1000
