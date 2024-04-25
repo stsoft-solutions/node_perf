@@ -15,7 +15,6 @@ ThreadPool.SetMinThreads(1300, 1300);
 var services = new ServiceCollection();
 
 
-
 var transport = args[0]; // "http"
 var port = args[1]; //"5000"
 var loadSize = args[2]; //"100" 
@@ -23,7 +22,8 @@ var concurrentRequests = args[3]; //"50"
 var scenarioName = $"scenario_{transport}_{port}_{loadSize}_{concurrentRequests}";
 
 // Configure gRPC client using GrpcClientFactory
-services.AddGrpcClient<BarService.BarServiceClient>("grpc",options => options.Address = new Uri($"http://localhost:{port}"));
+services.AddGrpcClient<BarService.BarServiceClient>("grpc",
+    options => options.Address = new Uri($"http://localhost:{port}"));
 services.AddHttpClient("http", client => client.BaseAddress = new Uri($"http://localhost:{port}"));
 
 var serviceProvider = services.BuildServiceProvider();
@@ -67,10 +67,11 @@ var httpScenario100 = Scenario.Create(scenarioName, async context =>
     {
         response = await httpClientFactory.CreateClient("http").GetAsync("/bar/100");
     }
-    catch (Exception )
+    catch (Exception)
     {
         return Response.Fail();
     }
+
     if (!response.IsSuccessStatusCode) return Response.Fail();
     var bars = await response.Content.ReadFromJsonAsync<JsonBarsResponse>();
     if (bars == null) return Response.Fail();
@@ -84,10 +85,11 @@ var httpScenario5000 = Scenario.Create(scenarioName, async context =>
     {
         response = await httpClientFactory.CreateClient("http").GetAsync("/bar/5000");
     }
-    catch (Exception )
+    catch (Exception)
     {
         return Response.Fail();
     }
+
     if (!response.IsSuccessStatusCode) return Response.Fail();
     var bars = await response.Content.ReadFromJsonAsync<JsonBarsResponse>();
     if (bars == null) return Response.Fail();
@@ -113,6 +115,7 @@ static NodeStats RunSimulation(ScenarioProps scenarioProps, LoadSimulation loadS
 {
     return NBomberRunner.RegisterScenarios(scenarioProps.WithLoadSimulations(loadSimulation))
         .WithTargetScenarios(scenarioProps.ScenarioName)
+        .WithReportFormats(ReportFormat.Md)
+        .WithReportFileName(scenarioProps.ScenarioName + ".md")
         .Run();
 }
-
