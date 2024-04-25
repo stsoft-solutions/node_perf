@@ -4,7 +4,7 @@
   * [1 Concurrent connection](#1-concurrent-connection)
   * [50 Concurrent connections](#50-concurrent-connections)
   * [200 Concurrent connections](#200-concurrent-connections)
-  * [500 Concurrent connections](#1000-concurrent-connections)
+  * [500 Concurrent connections](#500-concurrent-connections)
 <!-- TOC -->
 
 # Preface
