@@ -18,7 +18,7 @@ function getBar5000(call, callback) {
     callback(null, bar5000Response);
 }
 
-const port = 3004;
+const port = 3008;
 
 // Prepare gRPC
 const PROTO_PATH = __dirname + '/../proto/simple.proto';

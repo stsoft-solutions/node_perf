@@ -35,7 +35,7 @@ if (cluster.isPrimary) {
               response.end('Hello World');
       }
   })
-  .listen(3002, () => {
-    console.log(`Worker ${process.pid} started and listenes port 3002`);
+  .listen(3009, () => {
+    console.log(`Worker ${process.pid} started and listenes port 3009`);
   });
 }

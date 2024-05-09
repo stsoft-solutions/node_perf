@@ -8,7 +8,7 @@ const symbol = 'AAPL';
 
 const bar100Response = { bars: Array(100).fill(bar), symbol };
 const bar5000Response = { bars: Array(5000).fill(bar), symbol };
-const port = 3003
+const port = 3010
 
 if (cluster.isPrimary) {
   console.log(`Primary ${process.pid} is running`);

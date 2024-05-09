@@ -5,21 +5,31 @@ using bomber;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Net.ClientFactory;
 using Microsoft.Extensions.DependencyInjection;
+using NBomber;
 using NBomber.Contracts;
 using NBomber.Contracts.Stats;
 using NBomber.CSharp;
 using Simple;
 
-ThreadPool.SetMinThreads(1300, 1300);
-
 var services = new ServiceCollection();
 
+var httpClientPool = new ClientPool<HttpClient>();
+var grpcClientPool = new ClientPool<BarService.BarServiceClient>();
 
 var transport = args[0]; // "http"
 var port = args[1]; //"5000"
-var loadSize = args[2]; //"100" 
+var loadSize = args[2]; //"100"
 var concurrentRequests = args[3]; //"50"
 var scenarioName = $"scenario_{transport}_{port}_{loadSize}_{concurrentRequests}";
+
+ThreadPool.GetMaxThreads(out var workerThreads, out var completionPortThreads);
+Console.WriteLine($"Max worker threads: {workerThreads}, Max completion port threads: {completionPortThreads}");
+
+ThreadPool.GetMinThreads(out workerThreads, out completionPortThreads);
+Console.WriteLine($"Min worker threads: {workerThreads}, Min completion port threads: {completionPortThreads}");
+ThreadPool.SetMinThreads((int)Math.Max(int.Parse(concurrentRequests) * 1.1, workerThreads), completionPortThreads);
+ThreadPool.GetMinThreads(out workerThreads, out completionPortThreads);
+Console.WriteLine($"Min worker threads: {workerThreads}, Min completion port threads: {completionPortThreads}");
 
 // Configure gRPC client using GrpcClientFactory
 services.AddGrpcClient<BarService.BarServiceClient>("grpc",
@@ -31,41 +41,53 @@ var grpcFactory = serviceProvider.GetRequiredService<GrpcClientFactory>();
 var httpClientFactory = serviceProvider.GetRequiredService<IHttpClientFactory>();
 
 
-// Define a scenario
+// Define a scenarios
+var warmupDuration = TimeSpan.FromSeconds(10);
 var grpcScenario100 = Scenario.Create(scenarioName, async context =>
-{
-    try
     {
-        var grpcBars = await grpcFactory.CreateClient<BarService.BarServiceClient>("grpc")
-            .GetBar100Async(new Empty());
-        return Response.Ok<BarsResponse>(payload: grpcBars);
-    }
-    catch (Exception)
+        try
+        {
+            var client = grpcClientPool.GetClient(context.ScenarioInfo);
+            var grpcBars = await client.GetBar100Async(new Empty());
+            return Response.Ok<BarsResponse>(grpcBars);
+        }
+        catch (Exception)
+        {
+            return Response.Fail();
+        }
+    }).WithInit(_ =>
     {
-        return Response.Fail();
-    }
-});
-// Define a scenario
+        InitGrpcPool(concurrentRequests, grpcFactory, grpcClientPool);
+        return Task.CompletedTask;
+    })
+    .WithWarmUpDuration(warmupDuration);
+
 var grpcScenario5000 = Scenario.Create(scenarioName, async context =>
 {
     try
     {
-        var grpcBars = await grpcFactory.CreateClient<BarService.BarServiceClient>("grpc")
-            .GetBar5000Async(new Empty());
-        return Response.Ok<BarsResponse>(payload: grpcBars);
+        var client = grpcClientPool.GetClient(context.ScenarioInfo);
+        var grpcBars = await client.GetBar5000Async(new Empty());
+        return Response.Ok<BarsResponse>(grpcBars);
     }
     catch (Exception)
     {
         return Response.Fail();
     }
-});
+}).WithInit(_ =>
+{
+    InitGrpcPool(concurrentRequests, grpcFactory, grpcClientPool);
+    return Task.CompletedTask;
+}).WithWarmUpDuration(warmupDuration);
+
 
 var httpScenario100 = Scenario.Create(scenarioName, async context =>
 {
     HttpResponseMessage response;
     try
     {
-        response = await httpClientFactory.CreateClient("http").GetAsync("/bar/100");
+        var client = httpClientPool.GetClient(context.ScenarioInfo);
+        response = await client.GetAsync("/bar/100");
     }
     catch (Exception)
     {
@@ -75,15 +97,20 @@ var httpScenario100 = Scenario.Create(scenarioName, async context =>
     if (!response.IsSuccessStatusCode) return Response.Fail();
     var bars = await response.Content.ReadFromJsonAsync<JsonBarsResponse>();
     if (bars == null) return Response.Fail();
-    return Response.Ok<JsonBarsResponse>(payload: bars);
-});
+    return Response.Ok<JsonBarsResponse>(bars);
+}).WithInit(context =>
+{
+    InitHttpPool(concurrentRequests, httpClientFactory, httpClientPool);
+    return Task.CompletedTask;
+}).WithWarmUpDuration(warmupDuration);
 
 var httpScenario5000 = Scenario.Create(scenarioName, async context =>
 {
     HttpResponseMessage response;
     try
     {
-        response = await httpClientFactory.CreateClient("http").GetAsync("/bar/5000");
+        var client = httpClientPool.GetClient(context.ScenarioInfo);
+        response = await client.GetAsync("/bar/5000");
     }
     catch (Exception)
     {
@@ -93,11 +120,16 @@ var httpScenario5000 = Scenario.Create(scenarioName, async context =>
     if (!response.IsSuccessStatusCode) return Response.Fail();
     var bars = await response.Content.ReadFromJsonAsync<JsonBarsResponse>();
     if (bars == null) return Response.Fail();
-    return Response.Ok<JsonBarsResponse>(payload: bars);
-});
+    return Response.Ok<JsonBarsResponse>(bars);
+}).WithInit(context =>
+{
+    InitHttpPool(concurrentRequests, httpClientFactory, httpClientPool);
+    return Task.CompletedTask;
+}).WithWarmUpDuration(warmupDuration);
+
 
 // Define load simulation
-var loadSimulation = Simulation.KeepConstant(int.Parse(concurrentRequests), TimeSpan.FromMinutes(2));
+var loadSimulation = Simulation.KeepConstant(int.Parse(concurrentRequests), TimeSpan.FromSeconds(30));
 
 var result = (transport, loadSize) switch
 {
@@ -108,7 +140,6 @@ var result = (transport, loadSize) switch
     _ => throw new InvalidOperationException()
 };
 
-
 return;
 
 static NodeStats RunSimulation(ScenarioProps scenarioProps, LoadSimulation loadSimulation)
@@ -117,5 +148,24 @@ static NodeStats RunSimulation(ScenarioProps scenarioProps, LoadSimulation loadS
         .WithTargetScenarios(scenarioProps.ScenarioName)
         .WithReportFormats(ReportFormat.Md)
         .WithReportFileName(scenarioProps.ScenarioName + ".md")
+        .WithReportingInterval(TimeSpan.FromSeconds(5))
         .Run();
+}
+
+void InitGrpcPool(string s, GrpcClientFactory factory, ClientPool<BarService.BarServiceClient> clientPool)
+{
+    for (var i = 0; i < int.Parse(s); i++)
+    {
+        var client = factory.CreateClient<BarService.BarServiceClient>("grpc");
+        clientPool.AddClient(client);
+    }
+}
+
+void InitHttpPool(string s, IHttpClientFactory factory, ClientPool<HttpClient> clientPool)
+{
+    for (var i = 0; i < int.Parse(s); i++)
+    {
+        var client = factory.CreateClient("http");
+        clientPool.AddClient(client);
+    }
 }
