@@ -12,7 +12,9 @@ const port = 3010
 
 if (cluster.isPrimary) {
   console.log(`Primary ${process.pid} is running`);
-  const numCPUs = os.cpus().length;
+  let numCPUs = os.availableParallelism();
+  console.log(`numCPUs: ${numCPUs}`);
+  numCPUs = 17;
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
   }

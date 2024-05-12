@@ -86,6 +86,14 @@ The test's duration: 30 seconds + 10 seconds warmup
 | .Net 8 (gRPC)             | 3001 |      62360,4 |             0,79 |        2204,1 |             22,42 |
 | Rust (gRPC)               | 3007 |      30066,5 |             1,64 |        2108,5 |              23,4 |
 
+**const numCPUs = os.availableParallelism();**
+
+| Framework                 | Port | RPS<br/> 100 | Mean ms<br/> 100 | RPS<br/> 5000 | Mean ms<br/> 5000 |
+|---------------------------|:----:|-------------:|-----------------:|--------------:|------------------:|
+| Node.js Cluster (gRPC)    | 3008 |              |                  |               |                   |
+| Node.js Cluster (Rest)    | 3009 |              |                  |               |                   |
+| Express.js Cluster (Rest) | 3010 |              |                  |               |                   |
+
 ## 200 Concurrent connections
 | Framework                 | Port | RPS<br/> 100 | Mean ms<br/> 100 | RPS<br/> 5000 | Mean ms<br/> 5000 |
 |---------------------------|:----:|-------------:|-----------------:|--------------:|------------------:|
@@ -101,6 +109,13 @@ The test's duration: 30 seconds + 10 seconds warmup
 | .Net 8 (gRPC)             | 3001 |      64442,4 |             3,06 |          2060 |             103,6 |
 | Rust (gRPC)               | 3007 |      26102,2 |             7,55 |        1787,1 |            110,71 |
 
+**const numCPUs = os.availableParallelism();**
+
+| Framework                 | Port | RPS<br/> 100 | Mean ms<br/> 100 | RPS<br/> 5000 | Mean ms<br/> 5000 |
+|---------------------------|:----:|-------------:|-----------------:|--------------:|------------------:|
+| Node.js Cluster (gRPC)    | 3008 |              |                  |               |                   |
+| Node.js Cluster (Rest)    | 3009 |              |                  |               |                   |
+| Express.js Cluster (Rest) | 3010 |              |                  |               |                   |
 
 ## 500 Concurrent connections
 | Framework                 | Port | RPS<br/> 100 | Mean ms<br/> 100 | RPS<br/> 5000 | Mean ms<br/> 5000 |
@@ -117,6 +132,7 @@ The test's duration: 30 seconds + 10 seconds warmup
 | .Net 8 (gRPC)             | 3001 |        57867 |             8,53 |        2154,3 |            255,33 |
 | Rust (gRPC)               | 3007 |        27718 |            17,81 |        1722,5 |            288,22 |
 
+
 ## 1000 Concurrent connections
 | Framework                    | Port | RPS<br/> 100 | Mean ms<br/> 100 | RPS<br/> 5000 | Mean ms<br/> 5000 |
 |------------------------------|:----:|-------------:|-----------------:|--------------:|------------------:|
@@ -131,4 +147,26 @@ The test's duration: 30 seconds + 10 seconds warmup
 | Node.js Cluster (gRPC)       | 3008 |      13567,3 |            72,77 |         638,1 |           1578,14 |
 | .Net 8 (gRPC)                | 3001 |      42543,4 |            23,26 |        1736,4 |            621,42 |
 | Rust (gRPC)                  | 3007 |      26242,3 |            37,68 |        1753,6 |            569,45 |
+
+## NodeCluster 100 items
+### 1 concurrent connection 
+| Framework                 | Port | RPS<br/> numCPU = 3 | Mean ms<br/> numCPU = 3 | RPS<br/> numCPU = 8 | Mean ms<br/> numCPU = 8 | RPS<br/> numCPU = 12 | Mean ms<br/> numCPU = 12 | RPS<br/> numCPU = 17 | Mean ms<br/> numCPU = 17 | 
+|---------------------------|:----:|--------------------:|------------------------:|--------------------:|------------------------:|---------------------:|-------------------------:|---------------------:|-------------------------:|
+| Node.js Cluster (gRPC)    | 3008 |              6503,2 |                    0,15 |              6609,1 |                    0,15 |               6574,8 |                     0,15 |               6607,1 |                     0,15 |
+| Node.js Cluster (Rest)    | 3009 |              8453,9 |                    0,12 |              8566,2 |                    0,11 |               8654,1 |                     0,11 |               8661,6 |                     0,11 |
+| Express.js Cluster (Rest) | 3010 |                5470 |                    0,18 |              5490,7 |                    0,18 |               5877,7 |                     0,17 |               5493,3 |                     0,18 |
+
+### 50 concurrent connection
+| Framework                 | Port | RPS<br/> numCPU = 3 | Mean ms<br/> numCPU = 3 | RPS<br/> numCPU = 8 | Mean ms<br/> numCPU = 8 | RPS<br/> numCPU = 12 | Mean ms<br/> numCPU = 12 | RPS<br/> numCPU = 17 | Mean ms<br/> numCPU = 17 |
+|---------------------------|:----:|--------------------:|------------------------:|--------------------:|------------------------:|---------------------:|-------------------------:|---------------------:|-------------------------:|
+| Node.js Cluster (gRPC)    | 3008 |             15960,4 |                    3,09 |             16124,6 |                    3,06 |              16011,6 |                     3,07 |              15823,8 |                     3,12 |
+| Node.js Cluster (Rest)    | 3009 |             39207,9 |                    1,26 |             31200,7 |                    1,58 |              31434,6 |                     1,57 |              31179,5 |                     1,58 |
+| Express.js Cluster (Rest) | 3010 |             20364,7 |                    2,42 |             20466,1 |                    2,41 |              28765,1 |                     1,71 |              28156,7 |                     1,75 |
+
+### 200 concurrent connection
+| Framework                 | Port | RPS<br/> numCPU = 3 | Mean ms<br/> numCPU = 3 | RPS<br/> numCPU = 8 | Mean ms<br/> numCPU = 8 | RPS<br/> numCPU = 12 | Mean ms<br/> numCPU = 12 | RPS<br/> numCPU = 17 | Mean ms<br/> numCPU = 17 |
+|---------------------------|:----:|--------------------:|------------------------:|--------------------:|------------------------:|---------------------:|-------------------------:|---------------------:|-------------------------:|
+| Node.js Cluster (gRPC)    | 3008 |             15192,2 |                   12,98 |             15390,9 |                   12,81 |              15390,9 |                     12,8 |                15383 |                    12,82 |
+| Node.js Cluster (Rest)    | 3009 |             37561,5 |                    5,26 |             45523,5 |                    4,34 |              43626,1 |                     4,52 |              42318,3 |                     4,67 |
+| Express.js Cluster (Rest) | 3010 |               23567 |                    8,39 |               32042 |                    6,16 |                33105 |                     5,95 |              31073,8 |                     6,35 |
 
