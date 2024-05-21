@@ -17,7 +17,7 @@ Both services are using the same data to prepare the response.
 
 NBomber is used to test the performance of these servers.
 
-For comparison, the .Net server (.Net 8) is added as well.
+For comparison, the .NET server (.NET 8) was also added.
 
 REST API
 - GET /bar/100
@@ -86,14 +86,6 @@ The test's duration: 30 seconds + 10 seconds warmup
 | .Net 8 (gRPC)             | 3001 |      62360,4 |             0,79 |        2204,1 |             22,42 |
 | Rust (gRPC)               | 3007 |      30066,5 |             1,64 |        2108,5 |              23,4 |
 
-**const numCPUs = os.availableParallelism();**
-
-| Framework                 | Port | RPS<br/> 100 | Mean ms<br/> 100 | RPS<br/> 5000 | Mean ms<br/> 5000 |
-|---------------------------|:----:|-------------:|-----------------:|--------------:|------------------:|
-| Node.js Cluster (gRPC)    | 3008 |              |                  |               |                   |
-| Node.js Cluster (Rest)    | 3009 |              |                  |               |                   |
-| Express.js Cluster (Rest) | 3010 |              |                  |               |                   |
-
 ## 200 Concurrent connections
 | Framework                 | Port | RPS<br/> 100 | Mean ms<br/> 100 | RPS<br/> 5000 | Mean ms<br/> 5000 |
 |---------------------------|:----:|-------------:|-----------------:|--------------:|------------------:|
@@ -108,14 +100,6 @@ The test's duration: 30 seconds + 10 seconds warmup
 | Node.js Cluster (gRPC)    | 3008 |      15299,6 |            12,89 |         685,3 |            288,99 |
 | .Net 8 (gRPC)             | 3001 |      64442,4 |             3,06 |          2060 |             103,6 |
 | Rust (gRPC)               | 3007 |      26102,2 |             7,55 |        1787,1 |            110,71 |
-
-**const numCPUs = os.availableParallelism();**
-
-| Framework                 | Port | RPS<br/> 100 | Mean ms<br/> 100 | RPS<br/> 5000 | Mean ms<br/> 5000 |
-|---------------------------|:----:|-------------:|-----------------:|--------------:|------------------:|
-| Node.js Cluster (gRPC)    | 3008 |              |                  |               |                   |
-| Node.js Cluster (Rest)    | 3009 |              |                  |               |                   |
-| Express.js Cluster (Rest) | 3010 |              |                  |               |                   |
 
 ## 500 Concurrent connections
 | Framework                 | Port | RPS<br/> 100 | Mean ms<br/> 100 | RPS<br/> 5000 | Mean ms<br/> 5000 |
