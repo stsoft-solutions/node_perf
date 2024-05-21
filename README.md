@@ -7,7 +7,7 @@
   * [500 Concurrent connections](#500-concurrent-connections)
   * [1000 Concurrent connections](#1000-concurrent-connections)
   * [NodeCluster 100 items](#nodecluster-100-items)
-    * [1 concurrent connection](#1-concurrent-connection-)
+    * [1 concurrent connection](#1-concurrent-connection-1)
     * [50 concurrent connection](#50-concurrent-connection)
     * [200 concurrent connection](#200-concurrent-connection)
 <!-- TOC -->
@@ -137,7 +137,7 @@ The test's duration: 30 seconds + 10 seconds warmup
 | Rust (gRPC)                  | 3007 |      26242,3 |            37,68 |        1753,6 |            569,45 |
 
 ## NodeCluster 100 items
-### 1 concurrent connection 
+### 1 concurrent connection
 | Framework                 | Port | RPS<br/> numCPU = 3 | Mean ms<br/> numCPU = 3 | RPS<br/> numCPU = 8 | Mean ms<br/> numCPU = 8 | RPS<br/> numCPU = 12 | Mean ms<br/> numCPU = 12 | RPS<br/> numCPU = 17 | Mean ms<br/> numCPU = 17 | 
 |---------------------------|:----:|--------------------:|------------------------:|--------------------:|------------------------:|---------------------:|-------------------------:|---------------------:|-------------------------:|
 | Node.js Cluster (gRPC)    | 3008 |              6503,2 |                    0,15 |              6609,1 |                    0,15 |               6574,8 |                     0,15 |               6607,1 |                     0,15 |
