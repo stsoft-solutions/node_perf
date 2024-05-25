@@ -10,6 +10,7 @@
     * [1 concurrent connection](#1-concurrent-connection-1)
     * [50 concurrent connection](#50-concurrent-connection)
     * [200 concurrent connection](#200-concurrent-connection)
+  * [.NET gRPC: 100 items using different ways to get a gRPC client.](#net-grpc-100-items-using-different-ways-to-get-a-grpc-client)
 <!-- TOC -->
 
 # Preface
@@ -158,3 +159,11 @@ The test's duration: 30 seconds + 10 seconds warmup
 | Node.js Cluster (Rest)    | 3009 |             37561,5 |                    5,26 |             45523,5 |                    4,34 |              43626,1 |                     4,52 |              42318,3 |                     4,67 |
 | Express.js Cluster (Rest) | 3010 |               23567 |                    8,39 |               32042 |                    6,16 |                33105 |                     5,95 |              31073,8 |                     6,35 |
 
+## .NET gRPC: 100 items using different ways to get a gRPC client.
+| Connections | RPS</br>Single | Mean ms</br>Single | RPS</br>Pool | Mean ms</br>Pool | RPS</br>Factory | Mean ms</br>Factory |
+|-------------|---------------:|-------------------:|-------------:|-----------------:|----------------:|--------------------:|
+| 1           |           9545 |                0,1 |         9455 |              0,1 |            9441 |                 0,1 |
+| 50          |          60532 |               0,82 |        59444 |             0,83 |           58403 |                0,85 |
+| 200         |          60560 |               3,29 |        61424 |             3,24 |           59707 |                3,33 |
+| 500         |          54898 |               9,07 |        54713 |             9,09 |           53821 |                9,26 |
+| 1000        |          41475 |              24,06 |        41458 |            24,05 |           39123 |               25,49 |

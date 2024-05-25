@@ -10,6 +10,7 @@ using NBomber.Contracts;
 using NBomber.Contracts.Stats;
 using NBomber.CSharp;
 using Simple;
+using Enum = System.Enum;
 
 var services = new ServiceCollection();
 
@@ -20,7 +21,8 @@ var transport = args[0]; // "http"
 var port = args[1]; //"5000"
 var loadSize = args[2]; //"100"
 var concurrentRequests = args[3]; //"50"
-var scenarioName = $"scenario_{transport}_{port}_{loadSize}_{concurrentRequests}";
+var grpcClientMode = args.Length > 4 ? Enum.Parse<GrpcMode>(args[4]) : GrpcMode.Pool;
+var scenarioName = $"scenario_{transport}_{port}_{loadSize}_{concurrentRequests}_{grpcClientMode}";
 
 ThreadPool.GetMaxThreads(out var workerThreads, out var completionPortThreads);
 Console.WriteLine($"Max worker threads: {workerThreads}, Max completion port threads: {completionPortThreads}");
@@ -39,7 +41,23 @@ services.AddHttpClient("http", client => client.BaseAddress = new Uri($"http://l
 var serviceProvider = services.BuildServiceProvider();
 var grpcFactory = serviceProvider.GetRequiredService<GrpcClientFactory>();
 var httpClientFactory = serviceProvider.GetRequiredService<IHttpClientFactory>();
+var grpcClient = grpcFactory.CreateClient<BarService.BarServiceClient>("grpc");
 
+// Function to get a client depending on the mode
+var getGrpcClient = new Func<ScenarioInfo, BarService.BarServiceClient>(_ => grpcClient);
+switch (grpcClientMode)
+{
+    case GrpcMode.Single:
+        break;
+    case GrpcMode.Pool:
+        getGrpcClient = scenarioInfo => grpcClientPool.GetClient(scenarioInfo);
+        break;
+    case GrpcMode.Factory:
+        getGrpcClient = _ => grpcFactory.CreateClient<BarService.BarServiceClient>("grpc");
+        break;
+    default:
+        throw new ArgumentOutOfRangeException();
+}
 
 // Define a scenarios
 var warmupDuration = TimeSpan.FromSeconds(10);
@@ -47,8 +65,7 @@ var grpcScenario100 = Scenario.Create(scenarioName, async context =>
     {
         try
         {
-            var client = grpcClientPool.GetClient(context.ScenarioInfo);
-            var grpcBars = await client.GetBar100Async(new Empty());
+            var grpcBars = await getGrpcClient(context.ScenarioInfo).GetBar100Async(new Empty());
             return Response.Ok<BarsResponse>(grpcBars);
         }
         catch (Exception)
@@ -57,7 +74,7 @@ var grpcScenario100 = Scenario.Create(scenarioName, async context =>
         }
     }).WithInit(_ =>
     {
-        InitGrpcPool(concurrentRequests, grpcFactory, grpcClientPool);
+        if (grpcClientMode == GrpcMode.Pool) InitGrpcPool(concurrentRequests, grpcFactory, grpcClientPool);
         return Task.CompletedTask;
     })
     .WithWarmUpDuration(warmupDuration);
@@ -66,8 +83,7 @@ var grpcScenario5000 = Scenario.Create(scenarioName, async context =>
 {
     try
     {
-        var client = grpcClientPool.GetClient(context.ScenarioInfo);
-        var grpcBars = await client.GetBar5000Async(new Empty());
+        var grpcBars = await getGrpcClient(context.ScenarioInfo).GetBar5000Async(new Empty());
         return Response.Ok<BarsResponse>(grpcBars);
     }
     catch (Exception)
@@ -76,7 +92,7 @@ var grpcScenario5000 = Scenario.Create(scenarioName, async context =>
     }
 }).WithInit(_ =>
 {
-    InitGrpcPool(concurrentRequests, grpcFactory, grpcClientPool);
+    if (grpcClientMode == GrpcMode.Pool) InitGrpcPool(concurrentRequests, grpcFactory, grpcClientPool);
     return Task.CompletedTask;
 }).WithWarmUpDuration(warmupDuration);
 
@@ -129,7 +145,7 @@ var httpScenario5000 = Scenario.Create(scenarioName, async context =>
 
 
 // Define load simulation
-var loadSimulation = Simulation.KeepConstant(int.Parse(concurrentRequests), TimeSpan.FromSeconds(30));
+var loadSimulation = Simulation.KeepConstant(int.Parse(concurrentRequests), TimeSpan.FromSeconds(60));
 
 var result = (transport, loadSize) switch
 {
@@ -168,4 +184,11 @@ void InitHttpPool(string s, IHttpClientFactory factory, ClientPool<HttpClient> c
         var client = factory.CreateClient("http");
         clientPool.AddClient(client);
     }
+}
+
+public enum GrpcMode
+{
+    Single,
+    Pool,
+    Factory
 }
