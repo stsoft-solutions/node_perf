@@ -4,6 +4,12 @@ using Simple;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure Kestrel to allow more concurrent HTTP/2 streams (gRPC calls) per connection
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.Http2.MaxStreamsPerConnection = 600;
+});
+
 // Add services to the container.
 builder.Services.AddGrpc();
 

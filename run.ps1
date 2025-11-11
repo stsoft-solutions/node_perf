@@ -1,143 +1,151 @@
-#.\bomber\bin\Release\net8.0\bomber.exe http 3000 100 1
-#.\bomber\bin\Release\net8.0\bomber.exe http 3000 5000 1
-#.\bomber\bin\Release\net8.0\bomber.exe http 3002 100 1
-#.\bomber\bin\Release\net8.0\bomber.exe http 3002 5000 1
-#.\bomber\bin\Release\net8.0\bomber.exe http 3003 100 1
-#.\bomber\bin\Release\net8.0\bomber.exe http 3003 5000 1
-#.\bomber\bin\Release\net8.0\bomber.exe http 3005 100 1
-#.\bomber\bin\Release\net8.0\bomber.exe http 3005 5000 1
-#.\bomber\bin\Release\net8.0\bomber.exe http 3006 100 1
-#.\bomber\bin\Release\net8.0\bomber.exe http 3006 5000 1
-#.\bomber\bin\Release\net8.0\bomber.exe http 3009 100 1
-#.\bomber\bin\Release\net8.0\bomber.exe http 3009 5000 1
-#.\bomber\bin\Release\net8.0\bomber.exe http 3010 100 1
-#.\bomber\bin\Release\net8.0\bomber.exe http 3010 5000 1
+# Port 3000 (HTTP)
+#.\bomber\bin\Release\net10.0\bomber.exe http 3000 100 1
+#.\bomber\bin\Release\net10.0\bomber.exe http 3000 5000 1
+#.\bomber\bin\Release\net10.0\bomber.exe http 3000 100 50
+#.\bomber\bin\Release\net10.0\bomber.exe http 3000 5000 50
+#.\bomber\bin\Release\net10.0\bomber.exe http 3000 100 200
+#.\bomber\bin\Release\net10.0\bomber.exe http 3000 5000 200
+#.\bomber\bin\Release\net10.0\bomber.exe http 3000 100 500
+#.\bomber\bin\Release\net10.0\bomber.exe http 3000 5000 500
+#.\bomber\bin\Release\net10.0\bomber.exe http 3000 100 1000
+#.\bomber\bin\Release\net10.0\bomber.exe http 3000 5000 1000
 
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 1 Pool
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 1 Pool
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 1 Single
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 1 Single
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 1 Factory
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 1 Factory
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3004 100 1
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3004 5000 1
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3007 100 1
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3007 5000 1
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3008 100 1
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3008 5000 1
+# Port 3001 (gRPC)
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 1 Pool
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 1 Pool
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 1 Single
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 1 Single
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 1 Factory
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 1 Factory
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 50 Pool
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 50 Pool
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 50 Single
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 50 Single
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 50 Factory
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 50 Factory
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 200 Pool
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 200 Pool
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 200 Single
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 200 Single
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 200 Factory
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 200 Factory
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 500 Pool
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 500 Pool
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 500 Single
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 500 Single
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 500 Factory
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 500 Factory
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 1000 Pool
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 1000 Pool
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 1000 Single
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 1000 Single
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 100 1000 Factory
+.\bomber\bin\Release\net10.0\bomber.exe grpc 3001 5000 1000 Factory
 
+# Port 3002 (HTTP)
+#.\bomber\bin\Release\net10.0\bomber.exe http 3002 100 1
+#.\bomber\bin\Release\net10.0\bomber.exe http 3002 5000 1
+#.\bomber\bin\Release\net10.0\bomber.exe http 3002 100 50
+#.\bomber\bin\Release\net10.0\bomber.exe http 3002 5000 50
+#.\bomber\bin\Release\net10.0\bomber.exe http 3002 100 200
+#.\bomber\bin\Release\net10.0\bomber.exe http 3002 5000 200
+#.\bomber\bin\Release\net10.0\bomber.exe http 3002 100 500
+#.\bomber\bin\Release\net10.0\bomber.exe http 3002 5000 500
+#.\bomber\bin\Release\net10.0\bomber.exe http 3002 100 1000
+#.\bomber\bin\Release\net10.0\bomber.exe http 3002 5000 1000
 
-#.\bomber\bin\Release\net8.0\bomber.exe http 3000 100 50
-#.\bomber\bin\Release\net8.0\bomber.exe http 3000 5000 50
-#.\bomber\bin\Release\net8.0\bomber.exe http 3002 100 50
-#.\bomber\bin\Release\net8.0\bomber.exe http 3002 5000 50
-#.\bomber\bin\Release\net8.0\bomber.exe http 3003 100 50
-#.\bomber\bin\Release\net8.0\bomber.exe http 3003 5000 50
-#.\bomber\bin\Release\net8.0\bomber.exe http 3005 100 50
-#.\bomber\bin\Release\net8.0\bomber.exe http 3005 5000 50
-#.\bomber\bin\Release\net8.0\bomber.exe http 3006 100 50
-#.\bomber\bin\Release\net8.0\bomber.exe http 3006 5000 50
-#.\bomber\bin\Release\net8.0\bomber.exe http 3009 100 50
-#.\bomber\bin\Release\net8.0\bomber.exe http 3009 5000 50
-#.\bomber\bin\Release\net8.0\bomber.exe http 3010 100 50
-#.\bomber\bin\Release\net8.0\bomber.exe http 3010 5000 50
+# Port 3003 (HTTP)
+#.\bomber\bin\Release\net10.0\bomber.exe http 3003 100 1
+#.\bomber\bin\Release\net10.0\bomber.exe http 3003 5000 1
+#.\bomber\bin\Release\net10.0\bomber.exe http 3003 100 50
+#.\bomber\bin\Release\net10.0\bomber.exe http 3003 5000 50
+#.\bomber\bin\Release\net10.0\bomber.exe http 3003 100 200
+#.\bomber\bin\Release\net10.0\bomber.exe http 3003 5000 200
+#.\bomber\bin\Release\net10.0\bomber.exe http 3003 100 500
+#.\bomber\bin\Release\net10.0\bomber.exe http 3003 5000 500
+#.\bomber\bin\Release\net10.0\bomber.exe http 3003 100 1000
+#.\bomber\bin\Release\net10.0\bomber.exe http 3003 5000 1000
 
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 50 Pool
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 50 Pool
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 50 Single
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 50 Single
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 50 Factory
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 50 Factory
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3004 100 50
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3004 5000 50
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3007 100 50
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3007 5000 50
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3008 100 50
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3008 5000 50
+# Port 3004 (gRPC)
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3004 100 1
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3004 5000 1
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3004 100 50
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3004 5000 50
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3004 100 200
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3004 5000 200
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3004 100 500
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3004 5000 500
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3004 100 1000
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3004 5000 1000
 
+# Port 3005 (HTTP)
+#.\bomber\bin\Release\net10.0\bomber.exe http 3005 100 1
+#.\bomber\bin\Release\net10.0\bomber.exe http 3005 5000 1
+#.\bomber\bin\Release\net10.0\bomber.exe http 3005 100 50
+#.\bomber\bin\Release\net10.0\bomber.exe http 3005 5000 50
+#.\bomber\bin\Release\net10.0\bomber.exe http 3005 100 200
+#.\bomber\bin\Release\net10.0\bomber.exe http 3005 5000 200
+#.\bomber\bin\Release\net10.0\bomber.exe http 3005 100 500
+#.\bomber\bin\Release\net10.0\bomber.exe http 3005 5000 500
+#.\bomber\bin\Release\net10.0\bomber.exe http 3005 100 1000
+#.\bomber\bin\Release\net10.0\bomber.exe http 3005 5000 1000
 
-#.\bomber\bin\Release\net8.0\bomber.exe http 3000 100 200
-#.\bomber\bin\Release\net8.0\bomber.exe http 3000 5000 200
-#.\bomber\bin\Release\net8.0\bomber.exe http 3002 100 200
-#.\bomber\bin\Release\net8.0\bomber.exe http 3002 5000 200
-#.\bomber\bin\Release\net8.0\bomber.exe http 3003 100 200
-#.\bomber\bin\Release\net8.0\bomber.exe http 3003 5000 200
-#.\bomber\bin\Release\net8.0\bomber.exe http 3005 100 200
-#.\bomber\bin\Release\net8.0\bomber.exe http 3005 5000 200
-#.\bomber\bin\Release\net8.0\bomber.exe http 3006 100 200
-#.\bomber\bin\Release\net8.0\bomber.exe http 3006 5000 200
-#.\bomber\bin\Release\net8.0\bomber.exe http 3009 100 200
-#.\bomber\bin\Release\net8.0\bomber.exe http 3009 5000 200
-#.\bomber\bin\Release\net8.0\bomber.exe http 3010 100 200
-#.\bomber\bin\Release\net8.0\bomber.exe http 3010 5000 200
+# Port 3006 (HTTP)
+#.\bomber\bin\Release\net10.0\bomber.exe http 3006 100 1
+#.\bomber\bin\Release\net10.0\bomber.exe http 3006 5000 1
+#.\bomber\bin\Release\net10.0\bomber.exe http 3006 100 50
+#.\bomber\bin\Release\net10.0\bomber.exe http 3006 5000 50
+#.\bomber\bin\Release\net10.0\bomber.exe http 3006 100 200
+#.\bomber\bin\Release\net10.0\bomber.exe http 3006 5000 200
+#.\bomber\bin\Release\net10.0\bomber.exe http 3006 100 500
+#.\bomber\bin\Release\net10.0\bomber.exe http 3006 5000 500
+#.\bomber\bin\Release\net10.0\bomber.exe http 3006 100 1000
+#.\bomber\bin\Release\net10.0\bomber.exe http 3006 5000 1000
 
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 200 Pool
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 200 Pool
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 200 Single
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 200 Single
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 200 Factory
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 200 Factory
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3004 100 200
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3004 5000 200
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3007 100 200
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3007 5000 200
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3008 100 200
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3008 5000 200
+# Port 3007 (gRPC)
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3007 100 1
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3007 5000 1
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3007 100 50
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3007 5000 50
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3007 100 200
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3007 5000 200
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3007 100 500
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3007 5000 500
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3007 100 1000
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3007 5000 1000
 
+# Port 3008 (gRPC)
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3008 100 1
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3008 5000 1
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3008 100 50
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3008 5000 50
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3008 100 200
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3008 5000 200
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3008 100 500
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3008 5000 500
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3008 100 1000
+#.\bomber\bin\Release\net10.0\bomber.exe grpc 3008 5000 1000
 
-#.\bomber\bin\Release\net8.0\bomber.exe http 3000 100 500
-#.\bomber\bin\Release\net8.0\bomber.exe http 3000 5000 500
-#.\bomber\bin\Release\net8.0\bomber.exe http 3002 100 500
-#.\bomber\bin\Release\net8.0\bomber.exe http 3002 5000 500
-#.\bomber\bin\Release\net8.0\bomber.exe http 3003 100 500
-#.\bomber\bin\Release\net8.0\bomber.exe http 3003 5000 500
-#.\bomber\bin\Release\net8.0\bomber.exe http 3005 100 500
-#.\bomber\bin\Release\net8.0\bomber.exe http 3005 5000 500
-#.\bomber\bin\Release\net8.0\bomber.exe http 3006 100 500
-#.\bomber\bin\Release\net8.0\bomber.exe http 3006 5000 500
-#.\bomber\bin\Release\net8.0\bomber.exe http 3009 100 500
-#.\bomber\bin\Release\net8.0\bomber.exe http 3009 5000 500
-#.\bomber\bin\Release\net8.0\bomber.exe http 3010 100 500
-#.\bomber\bin\Release\net8.0\bomber.exe http 3010 5000 500
+# Port 3009 (HTTP)
+#.\bomber\bin\Release\net10.0\bomber.exe http 3009 100 1
+#.\bomber\bin\Release\net10.0\bomber.exe http 3009 5000 1
+#.\bomber\bin\Release\net10.0\bomber.exe http 3009 100 50
+#.\bomber\bin\Release\net10.0\bomber.exe http 3009 5000 50
+#.\bomber\bin\Release\net10.0\bomber.exe http 3009 100 200
+#.\bomber\bin\Release\net10.0\bomber.exe http 3009 5000 200
+#.\bomber\bin\Release\net10.0\bomber.exe http 3009 100 500
+#.\bomber\bin\Release\net10.0\bomber.exe http 3009 5000 500
+#.\bomber\bin\Release\net10.0\bomber.exe http 3009 100 1000
+#.\bomber\bin\Release\net10.0\bomber.exe http 3009 5000 1000
 
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 500 Pool
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 500 Pool
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 500 Single
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 500 Single
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 500 Factory
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 500 Factory
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3004 100 500
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3004 5000 500
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3007 100 500
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3007 5000 500
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3008 100 500
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3008 5000 500
-
-
-#.\bomber\bin\Release\net8.0\bomber.exe http 3000 100 1000
-#.\bomber\bin\Release\net8.0\bomber.exe http 3000 5000 1000
-#.\bomber\bin\Release\net8.0\bomber.exe http 3002 100 1000
-#.\bomber\bin\Release\net8.0\bomber.exe http 3002 5000 1000
-#.\bomber\bin\Release\net8.0\bomber.exe http 3003 100 1000
-#.\bomber\bin\Release\net8.0\bomber.exe http 3003 5000 1000
-#.\bomber\bin\Release\net8.0\bomber.exe http 3005 100 1000
-#.\bomber\bin\Release\net8.0\bomber.exe http 3005 5000 1000
-#.\bomber\bin\Release\net8.0\bomber.exe http 3006 100 1000
-#.\bomber\bin\Release\net8.0\bomber.exe http 3006 5000 1000
-#.\bomber\bin\Release\net8.0\bomber.exe http 3009 100 1000
-#.\bomber\bin\Release\net8.0\bomber.exe http 3009 5000 1000
-#.\bomber\bin\Release\net8.0\bomber.exe http 3010 100 1000
-#.\bomber\bin\Release\net8.0\bomber.exe http 3010 5000 1000
-
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 1000 Pool
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 1000 Pool
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 1000 Single
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 1000 Single
-.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 100 1000 Factory
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3001 5000 1000 Factory
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3004 100 1000
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3004 5000 1000
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3007 100 1000
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3007 5000 1000
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3008 100 1000
-#.\bomber\bin\Release\net8.0\bomber.exe grpc 3008 5000 1000
+# Port 3010 (HTTP)
+#.\bomber\bin\Release\net10.0\bomber.exe http 3010 100 1
+#.\bomber\bin\Release\net10.0\bomber.exe http 3010 5000 1
+#.\bomber\bin\Release\net10.0\bomber.exe http 3010 100 50
+#.\bomber\bin\Release\net10.0\bomber.exe http 3010 5000 50
+#.\bomber\bin\Release\net10.0\bomber.exe http 3010 100 200
+#.\bomber\bin\Release\net10.0\bomber.exe http 3010 5000 200
+#.\bomber\bin\Release\net10.0\bomber.exe http 3010 100 500
+#.\bomber\bin\Release\net10.0\bomber.exe http 3010 5000 500
+#.\bomber\bin\Release\net10.0\bomber.exe http 3010 100 1000
+#.\bomber\bin\Release\net10.0\bomber.exe http 3010 5000 1000
