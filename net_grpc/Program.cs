@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.Limits.Http2.MaxStreamsPerConnection = 600;
+    options.Limits.MaxConcurrentConnections = 1000;
 });
 
 // Add services to the container.
